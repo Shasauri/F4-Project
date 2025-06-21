@@ -139,6 +139,8 @@ void menuUtama(){
                 system ("cls");
                 break;
             case 2:
+                manajemenAnggota();
+                system("cls");
                 break;
             case 3:
                 break;
@@ -183,6 +185,39 @@ void manajemenBuku(){
                 cout<<"Pilihan tidak valid";
         }
     }while(pilihan != 4);
+}
+
+void manajemenAnggota(){
+    int pilihan;
+    do {
+        cout << "+========================================+" << endl;
+        cout << "    MENU MANAJEMEN ANGGOTA   " << endl;
+        cout << "+========================================+" << endl;
+        cout << ""<< endl;
+        cout << "1. Tambah Anggota" << endl;
+        cout << "2. Tampilkan Daftar Anggota" << endl;
+        cout << "3. Hapus Anggota" << endl;
+        cout << "4. Kembali ke Menu Utama" << endl;
+        cout << "Pilih: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 4:
+                cout << "Kembali ke menu utama..." << endl;
+                break;
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+        }
+    } while (pilihan != 4);
 }
 
 int main(){
