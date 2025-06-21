@@ -42,6 +42,10 @@ void tambahBuku(){
         temp->next = BukuBaru;
     }
     cout<<"Buku baru berhasil ditambahkan"<<endl;
+    cout<<"Tekan enter untuk melanjutkan";
+    cin.ignore();
+    cin.get();
+    system("cls");
 }
 
 void tampilBuku(){
@@ -113,9 +117,14 @@ void hapusBuku(){
 
     delete temp;
     cout<<"Buku berhasil dihapus."<<endl;
+    cout<<"Tekan enter untuk melanjutkan";
+    cin.ignore();
+    cin.get();
+    system("cls");
 }
 
 void manajemenBuku();
+void manajemenAnggota();
 void menuUtama(){
     int pilihan;
     do{
@@ -187,6 +196,33 @@ void manajemenBuku(){
     }while(pilihan != 4);
 }
 
+void tambahAnggota(){
+    anggota *anggotaBaru = new anggota();
+    cout<<"+========================================+"<<endl;
+    cout<<"    TAMBAH ANGGOTA BARU     "<<endl;
+    cout<<"+========================================+"<<endl;
+    cout<<"Masukkan ID anggota: ";cin>>anggotaBaru->id;
+    cout<<"Masukkan nama: ";getline(cin>>ws, anggotaBaru->nama);
+    cout<<"masukkan alamat: ";getline(cin, anggotaBaru->alamat);
+    anggotaBaru->next = nullptr;
+
+    if(headAnggota == nullptr){
+        headAnggota = anggotaBaru;
+    }else{
+        anggota *temp = headAnggota;
+        while(temp->next != nullptr){
+            temp = temp->next;
+        }
+        temp->next = anggotaBaru;
+    }
+    cout<<"ANGGOTA BERHASIL DITAMBAHKAN!"<<endl;
+    cout << "Tekan Enter untuk kembali...";
+    cin.get();
+    system("cls");
+}
+
+
+
 void manajemenAnggota(){
     int pilihan;
     do {
@@ -203,7 +239,7 @@ void manajemenAnggota(){
 
         switch (pilihan) {
             case 1:
-                
+                tambahAnggota();
                 break;
             case 2:
                 
