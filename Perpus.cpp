@@ -12,6 +12,14 @@ struct buku{
 };
 buku *headBook = nullptr;
 
+struct anggota{
+    int id;
+    string nama;
+    string alamat;
+    anggota *next;
+};
+anggota *headAnggota = nullptr;
+
 void tambahBuku(){
     buku *BukuBaru = new buku();
     cout<<"+========================================+"<<endl;
