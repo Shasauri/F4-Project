@@ -127,6 +127,19 @@ void hapusBuku(){
         return;
     }
 
+    peminjaman* cek = headPeminjaman;
+    while(cek != nullptr){
+        if(cek->idBuku == targetID){
+            cout << "Buku ini sedang dipinjam dan tidak bisa dihapus!" << endl;
+            cout << "Tekan Enter untuk kembali..." << endl;
+            cin.ignore();
+            cin.get();
+            system("cls");
+            return;
+        }
+        cek = cek->next;
+    }
+
     buku *temp = headBook;
     buku *prev = nullptr;
 
@@ -331,6 +344,20 @@ void hapusAnggota(){
         system("cls");
         return;
     }
+
+    peminjaman* cek = headPeminjaman;
+    while(cek != nullptr){
+        if(cek->idAnggota == targetID){
+            cout << "Anggota ini sedang meminjam buku dan tidak bisa dihapus!" << endl;
+            cout << "Tekan Enter untuk kembali..." << endl;
+            cin.ignore();
+            cin.get();
+            system("cls");
+            return;
+        }
+        cek = cek->next;
+    }
+
     anggota *temp = headAnggota;
     anggota *prev = nullptr;
     while(temp != nullptr && temp->id != targetID){
