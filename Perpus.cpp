@@ -136,6 +136,7 @@ void manajemenBuku();
 void manajemenAnggota();
 void pinjamBuku();
 void kembalikanBuku();
+void riwayatPeminjaman();
 void menuUtama(){
     int pilihan;
     do{
@@ -480,6 +481,33 @@ void kembalikanBuku() {
     cout << "Tekan Enter untuk kembali..."<< endl;
     cin.ignore();
     cin.get();
+}
+
+void riwayatPeminjaman() {
+    if (headPeminjaman == nullptr) {
+        cout << "Belum ada data peminjaman." << endl;
+        cout << "Tekan Enter untuk kembali..."<< endl;
+        cin.ignore();
+        cin.get();
+        system("cls");
+        return;
+    }
+
+    cout << "+========================================+" << endl;
+    cout << "    RIWAYAT PEMINJAMAN     " << endl;
+    cout << "+========================================+" << endl;
+    peminjaman* temp = headPeminjaman;
+    while (temp != nullptr) {
+        cout << "ID Anggota     : " << temp->idAnggota << endl;
+        cout << "ID Buku        : " << temp->idBuku << endl;
+        cout << "Tanggal Pinjam : " << temp->tanggalPeminjaman << endl;
+        cout << "Tanggal Kembali: " << temp->tanggalKembali << endl;
+        cout << "------------------------------" << endl;
+        temp = temp->next;
+    }
+        cout << "Tekan Enter untuk kembali..."<< endl;
+        cin.ignore();
+        cin.get();
 }
 
 int main(){
