@@ -134,6 +134,8 @@ void hapusBuku(){
 
 void manajemenBuku();
 void manajemenAnggota();
+void pinjamBuku();
+void kembalikanBuku();
 void menuUtama(){
     int pilihan;
     do{
@@ -161,8 +163,12 @@ void menuUtama(){
                 system("cls");
                 break;
             case 3:
+                pinjamBuku();
+                system("cls");
                 break;
             case 4:
+                kembalikanBuku();
+                system("cls");
                 break;
             case 5:
                 break;
@@ -418,6 +424,62 @@ void pinjamBuku(){
     cout << "Tekan Enter untuk kembali..."<< endl;
     cin.get();
     system("cls");
+}
+
+void kembalikanBuku() {
+    int idAnggota, idBuku;
+    if (headPeminjaman == nullptr) {
+        cout << "Tidak ada data peminjaman." << endl;
+        cout << "Tekan Enter untuk kembali..."<< endl;
+        cin.ignore();
+        cin.get();
+        system("cls");
+        return;
+    }
+
+    cout << "+========================================+" << endl;
+    cout << "    KEMBALIKAN BUKU     " << endl; 
+    cout << "+========================================+" << endl;  
+    cout << "Masukkan ID anggota: ";
+    cin >> idAnggota;
+    cout << "Masukkan ID buku yang dikembalikan: ";
+    cin >> idBuku;
+
+    peminjaman* temp = headPeminjaman;
+    peminjaman* prev = nullptr;
+
+    while (temp != nullptr && 
+          !(temp->idAnggota == idAnggota && temp->idBuku == idBuku)) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == nullptr) {
+        cout << "Data peminjaman tidak ditemukan." << endl;
+        return;
+    }
+
+    if (prev == nullptr) {
+        headPeminjaman = temp->next;
+    } else {
+        prev->next = temp->next;
+    }
+
+    delete temp;
+
+    buku* buku = headBook;
+    while (buku != nullptr) {
+        if (buku->id == idBuku) {
+            buku->tersedia = true;
+            break;
+        }
+        buku = buku->next;
+    }
+
+    cout << "Buku berhasil dikembalikan!" << endl;
+    cout << "Tekan Enter untuk kembali..."<< endl;
+    cin.ignore();
+    cin.get();
 }
 
 int main(){
